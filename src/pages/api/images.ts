@@ -41,7 +41,7 @@ export default async function handler(
       .then(() => {
         return res.status(201).json({ success: true });
       })
-      .catch(err =>
+      .catch((err) =>
         res
           .status(501)
           .json({ error: `Sorry something Happened! ${err.message}` })
@@ -66,8 +66,8 @@ export default async function handler(
           query.Lambda('X', query.Get(query.Var('X')))
         )
       )
-      .then(response => {
-        const formattedData = response.data.map(item => ({
+      .then((response) => {
+        const formattedData = response.data.map((item) => ({
           ...item.data,
           ts: item.ts,
           id: item.ref.id,
@@ -78,7 +78,7 @@ export default async function handler(
           after: response.after ? response.after[0].id : null,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         return res.status(400).json(err);
       });
   }
